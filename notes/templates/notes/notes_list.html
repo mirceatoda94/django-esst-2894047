@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Welcome to SmartNotes</title>
+</head>
+<body>
+    <div class="notes-list">
+        <h1>All Notes</h1>
+        <ul>
+            {% for note in notes %}
+                <li>
+                    <h2>{{ note.title }}</h2>
+                    <p>{{ note.text }}</p>
+                    <p>Created on: {{ note.created|date:"F j, Y, g:i a" }}</p>
+                    <p>Likes: {{ note.likes }}</p>
+                </li>
+            {% empty %}
+                <li>No notes available.</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</body>
+</html>

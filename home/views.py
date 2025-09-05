@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-def home_view(request):
-    today = datetime.today()
-    return render(request, "home/welcome.html", {"today": today})
+class HomeView(TemplateView):
+    template_name = "home/welcome.html"
+    extra_context = {"today": datetime.today()}
 
-@login_required(login_url="/admin/login/")
-def authorized_view(request):
-    return render(request, "home/authorized.html", {})
+class AuthorizedView(LoginRequiredMixin, TemplateView):
+    template_name = "home/authorized.html"
+    login_url = "/admin/login/"
+
