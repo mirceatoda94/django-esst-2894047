@@ -6,5 +6,12 @@
     <p>{{ note.text }}</p>
     <p>Created on: {{ note.created|date:"F j, Y, g:i a" }}</p>
     <p>Likes: {{ note.likes }}</p>
+    <form method="POST" action="{% url 'notes.add_like' pk=note.id %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-secondary mt-3">Upvote</button>
+    </form>
+    <a href="{% url 'notes.update' pk=note.id %}" class="btn btn-secondary mt-3">Edit</a>
+    <a href="{% url 'notes.delete' pk=note.id %}" class="btn btn-danger mt-3">Delete</a>
 </div>
 {% endblock %}
