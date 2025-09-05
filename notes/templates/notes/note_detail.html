@@ -1,13 +1,10 @@
-<html>
-<head>
-    <title>{{ note.title }}</title>
-</head>
-<body>
-    <div class="note-detail">
-        <h1>{{ note.title }}</h1>
-        <p>{{ note.text }}</p>
-        <p>Created on: {{ note.created|date:"F j, Y, g:i a" }}</p>
-        <p>Likes: {{ note.likes }}</p>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="border rounded note-detail">
+    <h1>{{ note.title }}</h1>
+    <p>{{ note.text }}</p>
+    <p>Created on: {{ note.created|date:"F j, Y, g:i a" }}</p>
+    <p>Likes: {{ note.likes }}</p>
+</div>
+{% endblock %}

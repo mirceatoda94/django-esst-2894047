@@ -1,8 +1,6 @@
-<html>
-<head>
-    <title>Welcome to SmartNotes</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <div class="popular-notes-list">
         {% for note in popular_notes %}
             <div class="note">
@@ -15,5 +13,4 @@
             <p>No popular notes available.</p>
         {% endfor %}
     </div>
-</body>
-</html>
+{% endblock %}
